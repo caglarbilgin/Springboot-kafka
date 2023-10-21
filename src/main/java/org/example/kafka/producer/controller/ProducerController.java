@@ -1,5 +1,6 @@
 package org.example.kafka.producer.controller;
 
+import jakarta.annotation.PostConstruct;
 import org.example.kafka.producer.dto.ProductDTO;
 import org.example.kafka.producer.service.ProducerService;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ public class ProducerController {
     }
 
     @GetMapping
-    public String healthCheck(@RequestBody String message) {
+    public String send(@RequestBody String message) {
         producerService.send(message);
         return "message is sent successfully !";
     }
@@ -24,5 +25,10 @@ public class ProducerController {
     public ProductDTO sendProductMessage(@RequestBody ProductDTO message) {
         producerService.send(message);
         return message;
+    }
+
+    @PostConstruct
+    public void generateMessage(){
+        send("Test message");
     }
 }
