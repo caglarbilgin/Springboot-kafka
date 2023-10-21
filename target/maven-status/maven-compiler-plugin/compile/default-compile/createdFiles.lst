@@ -1,0 +1,3 @@
+org/example/kafka/producer/controller/ProducerController.class
+org/example/kafka/producer/service/ProducerService.class
+org/example/kafka/producer/ProducerApplication.class
